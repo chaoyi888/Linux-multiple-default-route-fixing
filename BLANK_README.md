@@ -53,10 +53,19 @@ To route traffic to different internet providers, use policy-based routing inste
      ```
    Entries starting with default indicate a default route. Note the interface names of these entries displayed next to dev.
    
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
+2. Use the following commands to display the NetworkManager connections that use the interfaces you identified in the previous step:
+     ```sh
+    # nmcli -f GENERAL.CONNECTION,IP4.GATEWAY,IP6.GATEWAY device show enp1s0
+    GENERAL.CONNECTION:      Corporate-LAN
+    IP4.GATEWAY:             192.168.122.1
+    IP6.GATEWAY:             2001:db8:1::1
+
+    # nmcli -f GENERAL.CONNECTION,IP4.GATEWAY,IP6.GATEWAY device show enp7s0
+    GENERAL.CONNECTION:      Internet-Provider
+    IP4.GATEWAY:             198.51.100.1
+    IP6.GATEWAY:             2001:db8:2::1
+     ```
+    In these examples, the profiles named Corporate-LAN and Internet-Provider have the default gateways set. Because, in a local network, the default gateway is typically the host that is one hop closer to the internet, the rest of this procedure assumes that the default gateways in the Corporate-LAN are incorrect.
 
 
 
