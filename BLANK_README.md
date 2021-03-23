@@ -80,12 +80,12 @@ To route traffic to different internet providers, use policy-based routing inste
 
 5. Verification steps
     * Display the IPv4 and IPv6 routing tables and verify that only one default gateway is available for each protocol:
-        ** For IPv4, enter:
-            ```sh
-            # ip -4 route
-            default via 192.0.2.1 dev enp1s0 proto static metric 101
-            ...
-            ```
+        For IPv4, enter:
+        ```sh
+        # ip -4 route
+        default via 192.0.2.1 dev enp1s0 proto static metric 101
+        ...
+        ```
 
 
 
