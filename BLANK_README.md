@@ -44,7 +44,7 @@ To route traffic to different internet providers, use policy-based routing inste
      default via 198.51.100.1 dev enp7s0 proto static metric 102
      ...
      ```
-    * For IPv6, enter:
+   * For IPv6, enter:
      ```sh
      # ip -6 route
      default via 2001:db8:1::1 dev enp1s0 proto static metric 101 pref medium
