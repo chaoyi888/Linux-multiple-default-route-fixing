@@ -67,6 +67,31 @@ To route traffic to different internet providers, use policy-based routing inste
      ```
     In these examples, the profiles named Corporate-LAN and Internet-Provider have the default gateways set. Because, in a local network, the default gateway is typically the host that is one hop closer to the internet, the rest of this procedure assumes that the default gateways in the Corporate-LAN are incorrect.
 
+3. Configure that NetworkManager does not use the Corporate-LAN connection as the default route for IPv4 and IPv6 connections:
+     ```sh
+    # nmcli connection modify Corporate-LAN ipv4.never-default yes ipv6.never-default yes
+     ```
+   Note that setting ipv4.never-default and ipv6.never-default to yes, automatically removes the default gateway’s IP address for the corresponding protocol from the connection profile.
+
+4. Activate the Corporate-LAN connection:
+     ```sh
+    # nmcli connection up Corporate-LAN
+     ```
+
+5. Verification steps
+    * Display the IPv4 and IPv6 routing tables and verify that only one default gateway is available for each protocol:
+        ** For IPv4, enter:
+            ```sh
+            # ip -4 route
+            default via 192.0.2.1 dev enp1s0 proto static metric 101
+            ...
+            ```
+
+
+
+
+
+
 
 
 <!-- USAGE EXAMPLES -->
