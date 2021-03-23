@@ -38,12 +38,21 @@ To route traffic to different internet providers, use policy-based routing inste
 
 1. Display the routing table:
    * For IPv4, enter:
-   ```sh
-   # ip -4 route
-   default via 192.0.2.1 dev enp1s0 proto static metric 101
-   default via 198.51.100.1 dev enp7s0 proto static metric 102
-   ...
-   ```
+     ```sh
+     # ip -4 route
+     default via 192.0.2.1 dev enp1s0 proto static metric 101
+     default via 198.51.100.1 dev enp7s0 proto static metric 102
+     ...
+     ```
+    * For IPv6, enter:
+     ```sh
+     # ip -6 route
+     default via 2001:db8:1::1 dev enp1s0 proto static metric 101 pref medium
+     default via 2001:db8:2::1 dev enp7s0 proto static metric 102 pref medium
+     ...
+     ```
+   Entries starting with default indicate a default route. Note the interface names of these entries displayed next to dev.
+   
 2. Install NPM packages
    ```sh
    npm install
